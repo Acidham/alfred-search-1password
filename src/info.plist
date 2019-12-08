@@ -156,7 +156,7 @@ SETUP
 		<string>vaultNames</string>
 	</array>
 	<key>version</key>
-	<string>0.8.1</string>
+	<string>0.8</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-search-1password</string>
 </dict>
