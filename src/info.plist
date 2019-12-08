@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.apple.alfred.workflow.1password</string>
+	<key>category</key>
+	<string>Productivity</string>
+	<key>connections</key>
+	<dict>
+		<key>ACC7434F-2D07-45B1-96F3-497F2CC6380C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Acidham</string>
+	<key>description</key>
+	<string>Search and open 1Password item</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>1Password</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open location "onepassword://search/{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>pw</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching one password...</string>
+				<key>script</key>
+				<string># ==============================
+#   DEPENDENCY
+# ==============================
+# requires unix tool "jq" for parsing json
+# brew install jq
+
+# ==============================
+#   SET 1PASSWORD METADATA PATH
+# ==============================
+ONEPASSWORD_METADATA_PATH="$HOME/Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password";
+
+# ==============================
+#   RUN
+# ==============================
+./script.sh "${ONEPASSWORD_METADATA_PATH}" "$1";</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>1pass.py</string>
+				<key>subtext</key>
+				<string>Search and open 1password item</string>
+				<key>title</key>
+				<string>1Password Search</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>ACC7434F-2D07-45B1-96F3-497F2CC6380C</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Search 1Password item and open in 1Password
+
+SETUP
+
+1. Enable 1Password third-party integration
+
+1Password → Preferences → Advanced → Integratons → [x] Enable Spotlight and 3rd party app integrations
+
+2. Define vaultNames, the Vault showing up in search</string>
+	<key>uidata</key>
+	<dict>
+		<key>ACC7434F-2D07-45B1-96F3-497F2CC6380C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>55</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+		<key>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>285</integer>
+			<key>ypos</key>
+			<integer>55</integer>
+		</dict>
+	</dict>
+	<key>variables</key>
+	<dict>
+		<key>vaultNames</key>
+		<string></string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>vaultNames</string>
+	</array>
+	<key>version</key>
+	<string>0.8</string>
+	<key>webaddress</key>
+	<string>https://github.com/Acidham/alfred-search-1password</string>
+</dict>
+</plist>
