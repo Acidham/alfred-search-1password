@@ -9,7 +9,8 @@ user_dir = os.path.expanduser('~')
 pass_lib = user_dir + "/Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password"
 
 query = Tools.getArgv(1)
-vaults = Tools.getEnv('vaultNames').split(',') if Tools.getEnv('vaultNames') else ["Personal"]
+#vaults = Tools.getEnv('vaultNames').split(',') if Tools.getEnv('vaultNames') else ["Personal"]
+vaults = Tools.getEnv('vaultNames').split(',')
 
 
 def get_passwords(pass_lib):
@@ -32,11 +33,10 @@ def get_passwords(pass_lib):
 
 
 passwords = get_passwords(pass_lib)
-
 wf = Items()
 
 for p in passwords:
-    if p.get('vaultName') in vaults and (query == str() or query.lower() in p.get('itemTitle').lower()):
+    if (vaults[0] == str() or p.get('vaultName') in vaults) and (query == str() or query.lower() in p.get('itemTitle').lower()):
         uuid = p.get('uuid')
         itemTitle = p.get('itemTitle')
         itemDesc = p.get('itemDescription')
@@ -47,6 +47,4 @@ for p in passwords:
             arg=uuid
         )
         wf.addItem()
-
-
 wf.write()

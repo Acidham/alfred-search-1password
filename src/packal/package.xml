@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>1Password</name>
-  <version>1.0</version>
-  <bundle>com.alfredapp.renegaed.1password</bundle>
-  <updated>1539946631</updated>
-  <file>1password.alfredworkflow</file>
-</workflow>
