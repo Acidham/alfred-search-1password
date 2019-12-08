@@ -79,6 +79,13 @@ class Items(object):
         if response_type not in valid_keys:
             raise ValueError("Type must be in: %s" % valid_keys)
         the_items = dict()
+        if len(self.items) == 0:
+            self.setItem(
+                title="Nothing found...",
+                subtitle="Search did not return any results",
+                valid=False
+            )
+            self.addItem()
         the_items.update({"items": self.items})
         if response_type == "dict":
             return the_items
