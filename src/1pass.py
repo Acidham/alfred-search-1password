@@ -5,17 +5,19 @@ import os
 
 from Alfred import Items, Tools
 
+# 1Password Cache Dir
+CACHE_BASE_DIR = "Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password"
 user_dir = os.path.expanduser('~')
-pass_lib = user_dir + "/Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password"
+pass_lib = os.path.join(
+    user_dir, CACHE_BASE_DIR)
 
 query = Tools.getArgv(1)
-#vaults = Tools.getEnv('vaultNames').split(',') if Tools.getEnv('vaultNames') else ["Personal"]
 vaults = Tools.getEnv('vaultNames').split(',')
 
 
 def get_passwords(pass_lib):
     """
-    Get all Passwords stored in 1Password
+    Get all Password items stored in 1Password
 
     Args:
         pass_lib (str): Path to 1Password libraries including user roort
@@ -32,19 +34,46 @@ def get_passwords(pass_lib):
     return passwords
 
 
-passwords = get_passwords(pass_lib)
 wf = Items()
+# Inform user if 3rd Party integration is disabled
+# If 3rd party integration is enabled, read all passwords items
+if os.path.isdir(pass_lib):
+    passwords = get_passwords(pass_lib)
+else:
+    wf.setItem(
+        title="3rd Party Integration in 1Password is disabled!",
+        subtitle=u'1Password > Preferences > Advanced > Integratons > [x] Enable Spotlight and 3rd party app integrations',
+        valid=False
+    )
+    wf.addItem()
+    passwords = list()
+
 
 for p in passwords:
-    if (vaults[0] == str() or p.get('vaultName') in vaults) and (query == str() or query.lower() in p.get('itemTitle').lower()):
+    # Add Password item if no vaultNames are defined OR item's vault name in valutName config
+    # AND
+    # query empty OR query match item title
+    if (
+        (vaults[0] == str() or p.get('vaultName') in vaults) and
+        (query == str() or query.lower() in p.get('itemTitle').lower())
+    ):
         uuid = p.get('uuid')
         itemTitle = p.get('itemTitle')
         itemDesc = p.get('itemDescription')
+        url = p.get('websiteURLs')
 
         wf.setItem(
             title=itemTitle,
             subtitle=itemDesc,
             arg=uuid
         )
+        if url:
+            wf.setIcon('purl.png', "image")
+            wf.addMod(
+                key="cmd",
+                subtitle='OPEN: {0}'.format(url[0]),
+                arg=url[0]
+            )
+            wf.addModsToItem()
         wf.addItem()
 wf.write()

@@ -8,11 +8,36 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
+		<key>781220EC-96EF-4F41-B608-2F3268D19629</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>290DDBA3-B365-4C93-8475-5AC9F139969C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>51D10FA8-019D-43AC-83FF-241EF102683A</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>ACC7434F-2D07-45B1-96F3-497F2CC6380C</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</string>
+				<string>781220EC-96EF-4F41-B608-2F3268D19629</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -35,25 +60,21 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>open location "onepassword://search/{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
+				<key>browser</key>
 				<string></string>
-				<key>type</key>
-				<integer>6</integer>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.action.openurl</string>
 			<key>uid</key>
-			<string>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</string>
+			<string>290DDBA3-B365-4C93-8475-5AC9F139969C</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -118,9 +139,68 @@ ONEPASSWORD_METADATA_PATH="$HOME/Library/Containers/com.agilebits.onepassword7/D
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>^http</string>
+						<key>outputlabel</key>
+						<string>URL</string>
+						<key>uid</key>
+						<string>51D10FA8-019D-43AC-83FF-241EF102683A</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>ONEPASS</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>781220EC-96EF-4F41-B608-2F3268D19629</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open location "onepassword://search/{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>6</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>Search 1Password item and open in 1Password
+
+USAGE
+
+- `pw` &lt;1Password Item&gt; to search for an 1Password item. Press `Enter`to open item in 1Password
+- The link icon is displayed when 1Password item contains a URL. Press `cmd` to open 1st URL item
+
 
 SETUP
 
@@ -131,6 +211,20 @@ SETUP
 2. Define vaultNames, the Vault showing up in search</string>
 	<key>uidata</key>
 	<dict>
+		<key>290DDBA3-B365-4C93-8475-5AC9F139969C</key>
+		<dict>
+			<key>xpos</key>
+			<integer>455</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>781220EC-96EF-4F41-B608-2F3268D19629</key>
+		<dict>
+			<key>xpos</key>
+			<integer>255</integer>
+			<key>ypos</key>
+			<integer>80</integer>
+		</dict>
 		<key>ACC7434F-2D07-45B1-96F3-497F2CC6380C</key>
 		<dict>
 			<key>xpos</key>
@@ -141,9 +235,9 @@ SETUP
 		<key>E4DAC5AC-F379-498C-ACAE-C4D07176AB8D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>285</integer>
+			<integer>455</integer>
 			<key>ypos</key>
-			<integer>55</integer>
+			<integer>230</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
@@ -156,7 +250,7 @@ SETUP
 		<string>vaultNames</string>
 	</array>
 	<key>version</key>
-	<string>0.8.2</string>
+	<string>0.9</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-search-1password</string>
 </dict>
