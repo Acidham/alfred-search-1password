@@ -60,6 +60,7 @@ for p in passwords:
         uuid = p.get('uuid')
         itemTitle = p.get('itemTitle')
         itemDesc = p.get('itemDescription')
+
         url = p.get('websiteURLs')[0] if p.get('websiteURLs') else str()
 
         wf.setItem(
