@@ -60,19 +60,20 @@ for p in passwords:
         uuid = p.get('uuid')
         itemTitle = p.get('itemTitle')
         itemDesc = p.get('itemDescription')
-        url = p.get('websiteURLs')
+        url = p.get('websiteURLs')[0] if p.get('websiteURLs') else str()
 
         wf.setItem(
             title=itemTitle,
             subtitle=itemDesc,
-            arg=uuid
+            arg=uuid,
+            quicklookurl=url
         )
         if url:
             wf.setIcon('purl.png', "image")
             wf.addMod(
                 key="cmd",
-                subtitle='OPEN: {0}'.format(url[0]),
-                arg=url[0]
+                subtitle='OPEN: {0}'.format(url),
+                arg=url
             )
             wf.addModsToItem()
         wf.addItem()
