@@ -1,5 +1,5 @@
 # Alfred Search 1Password
-Search 1Password item and open in 1Password
+Search 1Password item and open in 1Password.
 
 ## USAGE
 
