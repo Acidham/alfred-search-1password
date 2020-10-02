@@ -10,15 +10,4 @@ Search 1Password item and open in 1Password.
 
 1. Enable 1Password third-party integration
    1Password → Preferences → Advanced → Integratons → [x] Enable Spotlight and 3rd party app integrations
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-2. Define vaultNames, the Vault showing up in search
-=======
 2. Define `vaultNames`, the vault showing up in search
-
->>>>>>> Stashed changes
-=======
-2. Define `vaultNames`, the vault showing up in search
-
->>>>>>> Stashed changes
