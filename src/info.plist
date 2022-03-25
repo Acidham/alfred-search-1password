@@ -114,21 +114,7 @@
 				<key>runningsubtext</key>
 				<string>Searching one password...</string>
 				<key>script</key>
-				<string># ==============================
-#   DEPENDENCY
-# ==============================
-# requires unix tool "jq" for parsing json
-# brew install jq
-
-# ==============================
-#   SET 1PASSWORD METADATA PATH
-# ==============================
-ONEPASSWORD_METADATA_PATH="$HOME/Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password";
-
-# ==============================
-#   RUN
-# ==============================
-./script.sh "${ONEPASSWORD_METADATA_PATH}" "$1";</string>
+				<string>./py3.sh 1pass.py "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -138,7 +124,7 @@ ONEPASSWORD_METADATA_PATH="$HOME/Library/Containers/com.agilebits.onepassword7/D
 				<key>title</key>
 				<string>1Password Search</string>
 				<key>type</key>
-				<integer>8</integer>
+				<integer>5</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -362,7 +348,7 @@ SETUP
 		<string>vaultNames</string>
 	</array>
 	<key>version</key>
-	<string>0.9.1</string>
+	<string>1.0.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/Acidham/alfred-search-1password</string>
 </dict>

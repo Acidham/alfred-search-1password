@@ -1,15 +1,15 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import json
 import os
+import sys
 
-from Alfred import Items, Tools
+from Alfred3 import Items, Tools
 
 # 1Password Cache Dir
 CACHE_BASE_DIR = "Library/Containers/com.agilebits.onepassword7/Data/Library/Caches/Metadata/1Password"
 user_dir = os.path.expanduser('~')
-pass_lib = os.path.join(
-    user_dir, CACHE_BASE_DIR)
+pass_lib = os.path.join(user_dir, CACHE_BASE_DIR)
 
 query = Tools.getArgv(1)
 vaults = Tools.getEnv('vaultNames').split(',')

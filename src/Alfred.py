@@ -39,7 +39,7 @@ class Items(object):
 
     def setItem(self, **kwargs):
         """Add multiple key values to define an item
-        Note: addItem needs to be called to submit a Script Filter item 
+        Note: addItem needs to be called to submit a Script Filter item
         to the Script Filter object
 
         Args:
@@ -153,12 +153,12 @@ class Items(object):
         self.setKv("mods", self.mods)
 
     def updateItem(self, id, key, value):
-        """Update an Alfred script filter item key with a new value      
+        """Update an Alfred script filter item key with a new value
 
         Args:
             id (int): list indes
             key (str): key which needs to be updated
-            value (str): new value 
+            value (str): new value
         """
         dict_item = self.items[id]
         kv = dict_item[key]
@@ -214,7 +214,7 @@ class Tools(object):
         """Format float time to string
 
         Args:
-            float_time (float): Time in float 
+            float_time (float): Time in float
             format (str, optional): format string. Defaults to '%d.%m.%Y'.
 
         Returns:
@@ -272,7 +272,7 @@ class Tools(object):
         """Joins a list of strings
 
         Arguments:
-            *args (list): List which contains strings 
+            *args (list): List which contains strings
         Returns:
             str: joined str
         """
