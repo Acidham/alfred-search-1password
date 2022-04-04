@@ -3,6 +3,11 @@
 import json
 import os
 import sys
+<<<<<<< HEAD
+=======
+reload(sys)
+sys.setdefaultencoding('utf-8')
+>>>>>>> 22b06a07cf42022fece85b46a67ffa9836a1dee6
 
 from Alfred3 import Items, Tools
 
